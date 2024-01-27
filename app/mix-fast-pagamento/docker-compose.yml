@@ -1,0 +1,26 @@
+version: '3.5'
+
+services:
+  mysql:
+    image: mysql:latest
+    hostname: mysql-mixfastpagamento
+    environment:
+      MYSQL_DATABASE: 'dbmixfastpagamento'
+      MYSQL_USER: 'mixfast'
+      MYSQL_PASSWORD: 'q1w2e3r4'
+      MYSQL_ROOT_PASSWORD: 'q1w2e3r4'
+    ports:
+      - '3309:3306'
+    expose:
+      - '3308'
+    volumes:
+      - my-db:/var/lib/mysql
+    networks:
+      - fiap
+
+volumes:
+  my-db:
+
+networks:
+  fiap:
+    driver: bridge

@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: mix-fast
+  datasource:
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_SCHEMA}?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driverClassName: com.mysql.cj.jdbc.Driver
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui-mix-fast.html
+
+logging:
+  level:
+    br.com.postech.mixfastpagamento.dataproviders.gateway.api: DEBUG
+
+feign:
+  client:
+    config:
+      pagamento:
+        url: https://api.mercadopago.com/instore/orders/qr/seller/collectors/${MERCADO_PAGO_USER_ID}/pos/${MERCADO_PAGO_POS}/qrs
+        token: ${MERCADO_PAGO_TOKEN}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    metrics:
+      enabled: false
+    prometheus:
+      enabled: true
+
+mix-fast-pagamento:
+  openapi:
+    dev-url: http://localhost:${server.port}
+
+server:
+  port: 9081
