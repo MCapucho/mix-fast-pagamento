@@ -1,4 +1,4 @@
-resource "aws_ecs_task_definition" "mixfast_ecs_task_definition" {
+resource "aws_ecs_task_definition" "mixfastpagamento_ecs_task_definition" {
   family                   = "family_${var.name}"
   requires_compatibilities = ["FARGATE"]
   network_mode             = var.network_mode
@@ -17,7 +17,7 @@ resource "aws_ecs_task_definition" "mixfast_ecs_task_definition" {
   [
     {
       "name": "container_${var.name}",
-      "image": "022874923015.dkr.ecr.us-east-1.amazonaws.com/mixfast:latest",
+      "image": "022874923015.dkr.ecr.us-east-1.amazonaws.com/mixfastpagamento:latest",
       "essential": true,
       "portMappings": [
         {
@@ -40,7 +40,7 @@ resource "aws_ecs_task_definition" "mixfast_ecs_task_definition" {
       "environment": [
         {
           "name": "DB_HOST",
-          "value": "dbmixfast.ct05vyvkxmk9.us-east-1.rds.amazonaws.com"
+          "value": "dbmixfastpagamento.ct05vyvkxmk9.us-east-1.rds.amazonaws.com"
         },
         {
           "name": "DB_PASSWORD",
@@ -48,7 +48,7 @@ resource "aws_ecs_task_definition" "mixfast_ecs_task_definition" {
         },
         {
           "name": "DB_SCHEMA",
-          "value": "dbmixfast"
+          "value": "dbmixfastpagamento"
         },
         {
           "name": "DB_USER",
@@ -56,7 +56,7 @@ resource "aws_ecs_task_definition" "mixfast_ecs_task_definition" {
         },
         {
           "name": "DB_PORT",
-          "value": "3306"
+          "value": "3307"
         },
         {
           "name": "MERCADO_PAGO_TOKEN",
@@ -79,22 +79,22 @@ resource "aws_ecs_task_definition" "mixfast_ecs_task_definition" {
   DEFINITION
 }
 
-resource "aws_ecs_service" "mixfast_ecs_service" {
+resource "aws_ecs_service" "mixfastpagamento_ecs_service" {
   name                 = "service_${var.name}"
   cluster              = var.ecs_cluster_name
-  task_definition      = aws_ecs_task_definition.mixfast_ecs_task_definition.arn
+  task_definition      = aws_ecs_task_definition.mixfastpagamento_ecs_task_definition.arn
   desired_count        = 1
   force_new_deployment = true
   launch_type          = "FARGATE"
 
   network_configuration {
-    security_groups  = [aws_security_group.mixfast_security_group.id]
+    security_groups  = [aws_security_group.mixfastpagamento_security_group.id]
     subnets          = var.subnet_ids
     assign_public_ip = true
   }
 
   depends_on = [
-    aws_ecs_task_definition.mixfast_ecs_task_definition
+    aws_ecs_task_definition.mixfastpagamento_ecs_task_definition
   ]
 
   health_check_grace_period_seconds = 300

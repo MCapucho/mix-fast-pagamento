@@ -1,6 +1,6 @@
-resource "aws_security_group" "mixfast_security_group" {
+resource "aws_security_group" "mixfastpagamento_security_group" {
   name        = "${var.name}_ecs_security-group"
-  description = "Grupo de seguranca da aplicacao mixfast"
+  description = "Grupo de seguranca da aplicacao mixfastpagamento"
   vpc_id      = var.vpc_id
 
   ingress {
