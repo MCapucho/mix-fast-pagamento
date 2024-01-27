@@ -214,6 +214,20 @@
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>${jacoco-plugin.version}</version>
+				<configuration>
+					<excludes>
+						<exclude>**/**/MixFastPagamentoApplication.*</exclude>
+						<exclude>br/com/postech/mixfastpagamento/entrypoints/handler/**/*</exclude>
+						<exclude>br/com/postech/mixfastpagamento/entrypoints/http/**/*</exclude>
+						<exclude>br/com/postech/mixfastpagamento/core/entity/**/*</exclude>
+						<exclude>br/com/postech/mixfastpagamento/core/exception/**/*</exclude>
+						<exclude>br/com/postech/mixfastpagamento/core/gateway/**/*</exclude>
+						<exclude>br/com/postech/mixfastpagamento/core/usecases/interfaces/**/*</exclude>
+						<exclude>br/com/postech/mixfastpagamento/dataproviders/exception/**/*</exclude>
+						<exclude>br/com/postech/mixfastpagamento/dataproviders/model/**/*</exclude>
+						<exclude>br/com/postech/mixfastpagamento/dataproviders/repository/**/*</exclude>
+					</excludes>
+				</configuration>
 				<executions>
 					<execution>
 						<goals>
