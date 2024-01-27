@@ -19,7 +19,7 @@ resource "aws_iam_role" "ecs_task_execution_role" {
 }
 
 resource "aws_iam_policy" "ecs_task_execution_policy" {
-  name        = "mixfast_ecs_execution_policy"
+  name        = "${var.name}_ecs_execution_policy"
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{
