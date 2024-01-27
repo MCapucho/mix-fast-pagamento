@@ -56,7 +56,7 @@ resource "aws_ecs_task_definition" "mixfastpagamento_ecs_task_definition" {
         },
         {
           "name": "DB_PORT",
-          "value": "3307"
+          "value": "3306"
         },
         {
           "name": "MERCADO_PAGO_TOKEN",
