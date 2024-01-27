@@ -5,14 +5,14 @@ variable "region" {
 variable "tags" {
   type = map(string)
   default     = {
-    "name" : "mixfast"
+    "name" : "mixfastpagamento"
     "company" : "fiap"
   }
 }
 
 variable "name" {
   type = string
-  default = "mixfast"
+  default = "mixfastpagamento"
 }
 
 variable "vpc_id" {
@@ -40,7 +40,7 @@ variable "target_group_arn" {
 }
 variable "port" {
   type = number
-  default = 9080
+  default = 9081
 }
 variable "ecs_cluster_name" {
   type = string
@@ -48,11 +48,11 @@ variable "ecs_cluster_name" {
 }
 variable "from_port_ingress" {
   type = number
-  default = 9080
+  default = 9081
 }
 variable "to_port_ingress" {
   type = number
-  default = 9080
+  default = 9081
 }
 variable "protocol_ingress" {
   type = string
