@@ -74,7 +74,7 @@ jobs:
     name: 'Sonar Analyze'
     runs-on: ubuntu-latest
     env:
-      TF_WORKING_DIR: 'app/mix-fast'
+      TF_WORKING_DIR: 'app/mix-fast-pagamento'
     needs:
       - maven
       - terraform
