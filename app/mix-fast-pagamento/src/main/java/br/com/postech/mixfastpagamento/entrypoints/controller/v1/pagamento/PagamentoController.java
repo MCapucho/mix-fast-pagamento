@@ -25,7 +25,6 @@ public class PagamentoController implements PagamentoDocumentable {
 
     @PostMapping
     public ResponseEntity<String> gerarQRCode(@Valid @RequestBody PagamentoHttp pagamentoHttp) {
-        log.info("Controller");
         String qrCode = gerarQRCodeUseCase.gerarQRCode(pagamentoHttpMapper.httpToEntity(pagamentoHttp));
         log.info("QRCode gerado com sucesso");
         return ResponseEntity.status(HttpStatus.OK).body(qrCode);

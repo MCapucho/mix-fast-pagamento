@@ -1,6 +1,5 @@
 package br.com.postech.mixfastpagamento.entrypoints.controller.v1.pagamento;
 
-import br.com.postech.mixfastpagamento.core.entity.FormaPagamento;
 import br.com.postech.mixfastpagamento.core.entity.Pagamento;
 import br.com.postech.mixfastpagamento.core.usecase.interfaces.pagamento.PagamentoGerarQRCodeUseCase;
 import br.com.postech.mixfastpagamento.entrypoints.handler.RestExceptionHandler;
