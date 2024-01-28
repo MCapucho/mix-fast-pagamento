@@ -5,6 +5,7 @@ import br.com.postech.mixfastpagamento.core.gateway.PagamentoGateway;
 import br.com.postech.mixfastpagamento.dataproviders.model.rest.DadosPagamentoRequest;
 import br.com.postech.mixfastpagamento.dataproviders.model.rest.DadosPagamentoResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+@Log4j2
 @RequiredArgsConstructor
 @Service
 public class PagamentoGatewayImpl implements PagamentoGateway {
@@ -31,6 +33,7 @@ public class PagamentoGatewayImpl implements PagamentoGateway {
 
     @Override
     public String gerarQrCode(Pagamento pagamento) {
+        log.info("Gateway 1");
         List<DadosPagamentoRequest.DadosPagamentoItensRequest> listaDadosPagamentoItensRequest = new ArrayList<>();
 
         DadosPagamentoRequest.DadosPagamentoItensRequest dadosPagamentoItensRequest =
@@ -57,9 +60,9 @@ public class PagamentoGatewayImpl implements PagamentoGateway {
                 .build();
 
         String accessToken = PREFIX_TOKEN + token;
-
+        log.info("Gateway 2");
         DadosPagamentoResponse dadosPagamentoResponse = pagamentoClient.gerarQRCode(dadosPagamentoRequest, accessToken);
-
+        log.info("Gateway 3");
         return dadosPagamentoResponse.getQrDados();
     }
 }
