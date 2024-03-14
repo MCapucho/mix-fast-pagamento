@@ -17,7 +17,7 @@ resource "aws_ecs_task_definition" "mixfastpagamento_ecs_task_definition" {
   [
     {
       "name": "container_${var.name}",
-      "image": "022874923015.dkr.ecr.us-east-1.amazonaws.com/mixfastpagamento:latest",
+      "image": "211125470560.dkr.ecr.us-east-1.amazonaws.com/mixfastpagamento:latest",
       "essential": true,
       "portMappings": [
         {
@@ -40,7 +40,7 @@ resource "aws_ecs_task_definition" "mixfastpagamento_ecs_task_definition" {
       "environment": [
         {
           "name": "DB_HOST",
-          "value": "dbmixfastpagamento.ct05vyvkxmk9.us-east-1.rds.amazonaws.com"
+          "value": "dbmixfastpagamento.cfyi0q0ccpic.us-east-1.rds.amazonaws.com"
         },
         {
           "name": "DB_PASSWORD",
